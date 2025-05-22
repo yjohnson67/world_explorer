@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "WORLD EXPLORER API",
+    "description": "API for managing a collection of popular destinations all over the world.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/destinations/": {
+      
+      
+      "get": {
+        "summary": "Get all destinations",
+        "description": "Retrieve a list of all destinations stored in the database.",
+        "responses": {
+          "200": {
+            "description": "List of destinations"
+          }
+        }
+      },
+      
+      
+      "post": {
+        "summary": "Add a new destination",
+        "description": "Create and store a new fictional destination in the database.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "destination",
+            "description": "Destination object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Europe"
+                },
+                "age": {
+                  "type": "integer",
+                  "example": 16
+                },
+                "occupation": {
+                  "type": "string",
+                  "example": "Greece"
+                },
+                "personality": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": ["mountains", "ocean", "natural beauty"]
+                },
+                "source": {
+                  "type": "string",
+                  "example": "Italy"
+                }
+              },
+              "required": ["name", "country", "description", "bestTimeToVisit", "topAttraction", "source"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Destination successfully created"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  }
+}
