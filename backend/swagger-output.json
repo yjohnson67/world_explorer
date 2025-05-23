@@ -41,15 +41,15 @@
                   "type": "string",
                   "example": "Europe"
                 },
-                "age": {
-                  "type": "integer",
-                  "example": 16
+                "country": {
+                  "description": "string",
+                  "example": "Switzerland"
                 },
-                "occupation": {
-                  "type": "string",
-                  "example": "Greece"
+                "bestTimeToVisit": {
+                  "description": "string",
+                  "example": "April - May, July - August,"
                 },
-                "personality": {
+                "topAttraction": {
                   "type": "array",
                   "items": {
                     "type": "string"

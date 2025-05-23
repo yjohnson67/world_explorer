@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 
 const destinationSchema = new mongoose.Schema({
   name: String,
-  country: Number,
+  country: String,
   description: String,
   bestTimeToVisit: [String],
-  topAttraction: [string],
+  topAttraction: [String],
   source: String,
 });
 
