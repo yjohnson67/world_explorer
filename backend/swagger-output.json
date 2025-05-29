@@ -74,6 +74,73 @@
           }
         }
       }
+    },
+
+ "/api/destinations/{id}": {
+      "put": {
+        "summary": "Update a destination",
+        "description": "Update details of an existing destination by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of destination to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "destination",
+            "description": "Updated destination object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "country": { "type": "string" },
+                "bestTimeToVisit": { "type": "string" },
+                "topAttraction": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "source": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Destination successfully updated"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Destination not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a destination",
+        "description": "Remove a destination from the database by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of destination to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Destination successfully deleted"
+          },
+          "404": {
+            "description": "Destination not found"
+          }
+        }
+      }
     }
   }
 }
