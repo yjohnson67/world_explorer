@@ -15,11 +15,14 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const newdestination = new destination(req.body);
-    await newdestination.save();
-    res.status(201).json({ message: 'destination created', newdestination });
+    const newDestination = new destination(req.body);
+    await newDestination.save();
+    res.status(201).json({ message: 'destination created', newDestination });
   } catch (error) {
-    res.status(400).json({ message: 'Error adding destinations', error });
+    if (error.name === 'validationError') {
+      return res.status(400).json({ message: 'validation failed', error: error.message});
+    }
+    res.status(500).json({ message: 'Server error', error });
   }
 });
 
@@ -36,7 +39,10 @@ router.put('/:id', async (req, res) => {
     }
     res.status(200).json({ message: 'Destination updated', updatedDestination });
   } catch (error) {
-    res.status(400).json({ message: 'Error updating destination', error });
+    if (error.name === 'validationError') {
+      return res.status(400).json({ message: 'Validation failed', error: error.message});
+    }
+    res.status(500).json({ message: 'Error updating destination', error });
   }
 });
 
@@ -52,6 +58,5 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ message: 'Error deleting destination', error });
   }
 });
-
 
 module.exports = router;

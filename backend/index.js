@@ -22,6 +22,11 @@ app.use('/api/destinations', destinationRoutes);
 // Swagger Documentation route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
+app.use((err, req, res, next) => {
+  console.error(err); // 👈 this logs the full error to console
+  res.status(500).json({ message: 'Server error', error: {} });
+});
+
 // MongoDB connection and server start
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {

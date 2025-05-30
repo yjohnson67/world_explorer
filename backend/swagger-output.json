@@ -45,6 +45,10 @@
                   "description": "string",
                   "example": "Switzerland"
                 },
+                "description": {
+                  "description": "string",
+                  "example": "Second smallest of the world continents."
+                },
                 "bestTimeToVisit": {
                   "description": "string",
                   "example": "April - May, July - August,"
@@ -98,6 +102,7 @@
               "properties": {
                 "name": { "type": "string" },
                 "country": { "type": "string" },
+                "description": { "type": "string" },
                 "bestTimeToVisit": { "type": "string" },
                 "topAttraction": {
                   "type": "array",
