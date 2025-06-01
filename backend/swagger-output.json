@@ -50,8 +50,9 @@
                   "example": "Second smallest of the world continents."
                 },
                 "bestTimeToVisit": {
-                  "description": "string",
-                  "example": "April - May, July - August,"
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": ["Spring", "Autumn"]
                 },
                 "topAttraction": {
                   "type": "array",
@@ -103,7 +104,11 @@
                 "name": { "type": "string" },
                 "country": { "type": "string" },
                 "description": { "type": "string" },
-                "bestTimeToVisit": { "type": "string" },
+                "bestTimeToVisit": {
+                "type": "array",
+                "items": { "type": "string" },
+                "example": ["Spring", "Autumn"]
+                },
                 "topAttraction": {
                   "type": "array",
                   "items": { "type": "string" }
