@@ -5,10 +5,10 @@
     "description": "API for managing a collection of popular destinations all over the world.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "world-explorer-ucdk.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api/destinations/": {

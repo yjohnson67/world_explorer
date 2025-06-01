@@ -13,8 +13,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
-app.use(express.json());
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://world-explorer-ucdk.onrender.com'
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 //API route
 app.use('/api/destinations', destinationRoutes);
