@@ -1,3 +1,4 @@
+
 // backend/index.js
 const express = require('express');
 const mongoose = require('mongoose');
@@ -23,6 +24,8 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+
+app.use(express.json());
 
 //API route
 app.use('/api/destinations', destinationRoutes);

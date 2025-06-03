@@ -17,11 +17,15 @@ router.post('/', async (req, res) => {
   try {
     const newDestination = new destination(req.body);
     await newDestination.save();
-    res.status(201).json({ message: 'destination created', newDestination });
+    res.status(201).json({ message: 'Destination created', destination: newDestination });
   } catch (error) {
-    if (error.name === 'validationError') {
-      return res.status(400).json({ message: 'validation failed', error: error.message});
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({
+        message: 'Validation failed',
+        errors: error.errors
+      });
     }
+    console.error('Unexpected server error:', error);
     res.status(500).json({ message: 'Server error', error });
   }
 });
@@ -39,7 +43,7 @@ router.put('/:id', async (req, res) => {
     }
     res.status(200).json({ message: 'Destination updated', updatedDestination });
   } catch (error) {
-    if (error.name === 'validationError') {
+    if (error.name === 'ValidationError') {
       return res.status(400).json({ message: 'Validation failed', error: error.message});
     }
     res.status(500).json({ message: 'Error updating destination', error });
