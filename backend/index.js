@@ -6,6 +6,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 //OAuth
+const authRoutes = require('./routes/auth');
 const session = require('express-session');
 const passport = require('passport');
 require('./passport'); 
@@ -20,6 +21,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use('/auth', authRoutes);
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
