@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+//OAuth
+const session = require('express-session');
+const passport = require('passport');
+require('./passport'); 
+
+
 const destinationRoutes = require('./routes/destination');
 
 const swaggerUi = require('swagger-ui-express');
@@ -14,6 +20,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+
 const allowedOrigins = [
   'http://localhost:3000',
   'https://world-explorer-ucdk.onrender.com'
