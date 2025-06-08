@@ -21,13 +21,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use('/auth', authRoutes);
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/auth', authRoutes);
 const allowedOrigins = [
   'http://localhost:3000',
   'https://world-explorer-ucdk.onrender.com'

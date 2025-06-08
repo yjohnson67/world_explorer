@@ -4,7 +4,7 @@ const GitHubStrategy = require('passport-github2').Strategy;
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "/auth/github/callback"
+    callbackURL: "https://world-explorer-ucdk.onrender.com/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // You can save the profile info to DB here if needed
